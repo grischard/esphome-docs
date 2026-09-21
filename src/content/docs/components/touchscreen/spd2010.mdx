@@ -5,9 +5,9 @@ description: "Configure the SPD2010 I²C capacitive touchscreen controller in ES
 
 import APIRef from '@components/APIRef.astro';
 
-The `spd2010` touchscreen platform supports the capacitive touch controller used on the Waveshare
-ESP32-S3-Touch-LCD-1.46. It requires an [I²C bus](/components/i2c/) and a
-[display](/components/display/). The default calibration covers the board's 412×412 display.
+The `spd2010` touchscreen platform supports the SPD2010 capacitive touch controller.
+It requires an [I²C bus](/components/i2c/) and a [display](/components/display/).
+The default calibration covers a 412×412 display.
 
 ```yaml
 touchscreen:
@@ -27,26 +27,13 @@ touchscreen:
   Override these values for other panel dimensions.
 - All other options from [Touchscreen](/components/touchscreen/#config-touchscreen).
 
-## Waveshare ESP32-S3-Touch-LCD-1.46
-
-Use the board's I²C bus on SDA GPIO11 and SCL GPIO10. The interrupt signal is GPIO4.
-With the [MIPI SPI display](/components/display/mipi_spi/)
-configured as `main_display`, use:
-
-```yaml
-touchscreen:
-  - platform: spd2010
-    display: main_display
-    interrupt_pin:
-      number: GPIO4
-      mode: INPUT_PULLUP
-```
-
 The driver reports each contact using its controller ID and releases contacts when their strength becomes zero.
 Use ESPHome's touchscreen automations or LVGL for gestures.
 
 ## See Also
 
 - [Touchscreen](/components/touchscreen/)
-- [MIPI SPI Display](/components/display/mipi_spi/)
+- [Waveshare ESP32-S3-Touch-LCD-1.46 Board Configuration][board]
 - <APIRef text="spd2010_touchscreen.h" path="spd2010/spd2010_touchscreen.h" />
+
+[board]: https://devices.esphome.io/devices/waveshare-esp32-s3-touch-lcd-1-46/
